@@ -3,13 +3,15 @@ import type { FlipCard } from './helpers';
 type GameCardProps = {
   card: FlipCard;
   displayNumber?: boolean;
+  removeSolved?: boolean;
   handleClick: (cardId: number) => void;
 };
 
 const GameCard = ({
   card,
   handleClick,
-  displayNumber = false
+  displayNumber = false,
+  removeSolved = false
 }: GameCardProps) => {
   const { cardId, image, flipped = false, solved = false } = card;
 
@@ -23,7 +25,7 @@ const GameCard = ({
       <div
         className={`relative size-full transition-transform duration-700 transform-style-preserve-3d ${
           flipped ? 'rotate-y-180' : ''
-        } ${solved ? 'hidden' : ''}`}
+        } ${solved && removeSolved ? 'hidden' : ''}`}
       >
         {/* Front of the card */}
         <div

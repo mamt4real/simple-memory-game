@@ -17,6 +17,7 @@ function useMemoryGame() {
   const [isHighScore, setIsHighScore] = useState(false);
   const [displayNumbers, setDisplayNumbers] = useState(false);
   const [noOfPairs, setNoOfPairs] = useState<number>(8);
+  const [removeSolved, setRemoveSolved] = useState<boolean>(false);
 
   const completed = useMemo(
     () => Object.values(board).every((c) => c.solved),
@@ -61,8 +62,8 @@ function useMemoryGame() {
       timeoutId = setTimeout(() => {
         setBoard((board) => ({
           ...board,
-          [card1.cardId]: { ...card1, flipped: false, solved },
-          [card2.cardId]: { ...card2, flipped: false, solved }
+          [card1.cardId]: { ...card1, flipped: solved, solved },
+          [card2.cardId]: { ...card2, flipped: solved, solved }
         }));
         if (!solved) {
           setMisses((misses) => misses + 1);
@@ -101,6 +102,8 @@ function useMemoryGame() {
     isHighScore,
     displayNumbers,
     noOfPairs,
+    removeSolved,
+    setRemoveSolved,
     setNoOfPairs,
     setDisplayNumbers,
     handleClick,

@@ -16,6 +16,8 @@ function MemoryGame() {
     isHighScore,
     displayNumbers,
     noOfPairs,
+    removeSolved,
+    setRemoveSolved,
     setNoOfPairs,
     setDisplayNumbers,
     handleClick,
@@ -35,6 +37,7 @@ function MemoryGame() {
             displayNumbers={displayNumbers}
             board={board}
             handleClick={handleClick}
+            removeSolved={removeSolved}
           />
         )}
       </div>
@@ -42,12 +45,14 @@ function MemoryGame() {
         <ScoreBoard score={{ moves, misses }} />
         <GameControls
           loading={loading}
-          speed={speed}
-          displayNumbers={displayNumbers}
           noOfPairs={noOfPairs}
           setNoOfPairs={setNoOfPairs}
+          displayNumbers={displayNumbers}
           setDisplayNumbers={setDisplayNumbers}
+          speed={speed}
           setSpeed={setSpeed}
+          removeSolved={removeSolved}
+          setRemoveSolved={setRemoveSolved}
           reset={resetGame}
         />
       </div>

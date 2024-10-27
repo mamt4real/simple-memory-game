@@ -5,12 +5,14 @@ type GameBoardProps = {
   board: Board;
   handleClick: (cardId: number) => void;
   displayNumbers?: boolean;
+  removeSolved?: boolean;
 };
 
 function GameBoard({
   board,
   handleClick,
-  displayNumbers = false
+  displayNumbers = false,
+  removeSolved = false
 }: GameBoardProps) {
   const cardCount = Object.keys(board).length;
 
@@ -31,6 +33,7 @@ function GameBoard({
           card={card}
           handleClick={handleClick}
           key={cardId}
+          removeSolved={removeSolved}
         />
       ))}
     </div>
